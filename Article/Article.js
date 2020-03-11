@@ -88,7 +88,70 @@ const data = [
   }
 ];
 
+
+
+function cards(title, date, p1, p2, p3){
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const titleDate = document.createElement('p');
+  const par1 = document.createElement('p');
+  const par2 = document.createElement('p');
+  const par3 = document.createElement('p');
+  const expandBtn = document.createElement('span');
+
+  //append
+
+  // article.appendChild('articleTitle','titleDate','par1','par2','par3','expandBtn');
+
+  article.append(articleTitle);
+  article.append(titleDate);
+  article.append(par1);
+  article.append(par2);
+  article.append(par3);
+  article.append(expandBtn);
+
+  //add classes 
+
+  article.classList.add('article');
+  articleTitle.classList.add('date');
+  expandBtn.classList.add('expandButton');
+
+
+
+  //text content
+
+  articleTitle.textContent = title;
+  titleDate.textContent = date;
+  par1.textContent = p1;
+  par2.textContent = p2;
+  par3.textContent = p3;
+  //button
+  expandBtn.textContent = ('Click to Expand');
+
+  expandBtn.addEventListener("click", () => {
+    article.classList.toggle("article-open");
+  });
+
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+
+data.forEach((item) => {
+  console.log(item);
+ articles.append(cards(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
+})
+
+
+// panelData.forEach( data => {
+//   console.log("creating panels", data.title)
+//   accordion.append(createPanel(data.title, data.content))
+// })
+
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+
+
   
   <div class="article">
     <h2>{title of the article}</h2>
