@@ -23,7 +23,6 @@ function openMenu(arr) {
     const item = document.createElement('li');
     item.textContent = link;
     list.appendChild(item);
-    item.style.cursor = 'pointer';
   })
 
   nav.classList.add('menu');
