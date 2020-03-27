@@ -20,7 +20,9 @@ const data = [
     thirdParagraph: `Dagobah hutt jawa leia calamari ventress skywalker yoda. Binks wicket hutt coruscant sidious
         naboo ackbar tatooine. Hutt lars padmé darth. Maul solo darth darth jabba qui-gon chewbacca darth maul. Moff baba wicket
         han. C-3po antilles moff qui-gon ahsoka aayla dooku amidala. Palpatine droid amidala droid k-3po twi'lek padmé wookiee. Leia
-        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`
+        moff calamari mon obi-wan. Solo grievous lando coruscant. Jinn darth palpatine obi-wan mon.`,
+
+    fourthParagraph: `this is the NEW`
   },
   {
     title: 'Javascript and You, ES6',
@@ -40,7 +42,8 @@ const data = [
     thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
         Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
         roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
-        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
+        sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`,
+    fourthParagraph: `this is the NEW`
   },
   {
     title: 'React vs Angular vs Vue',
@@ -68,7 +71,8 @@ const data = [
 
     thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
         Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
-        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
+        Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`,
+    fourthParagraph: `this is the NEW`
   },
   {
     title: 'Professional Software Development in 2019',
@@ -84,11 +88,80 @@ const data = [
 
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
-          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`,
+
+    fourthParagraph: `this is the NEW also this makes me sad- i miss GOT`
   }
+
 ];
 
+
+
+function cards(title, date, p1, p2, p3, p4){
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const titleDate = document.createElement('p');
+  const par1 = document.createElement('p');
+  const par2 = document.createElement('p');
+  const par3 = document.createElement('p');
+  const par4 = document.createElement('p');
+  const expandBtn = document.createElement('span');
+
+  //append
+
+  // article.appendChild('articleTitle','titleDate','par1','par2','par3','expandBtn');
+
+  article.append(articleTitle);
+  article.append(titleDate);
+  article.append(par1);
+  article.append(par2);
+  article.append(par3);
+  article.append(par4);
+  article.append(expandBtn);
+
+  //add classes 
+
+  article.classList.add('article');
+  articleTitle.classList.add('date');
+  expandBtn.classList.add('expandButton');
+
+
+
+  //text content
+
+  articleTitle.textContent = title;
+  titleDate.textContent = date;
+  par1.textContent = p1;
+  par2.textContent = p2;
+  par3.textContent = p3;
+  par4.textContent = p4;
+  //button
+  expandBtn.textContent = ('Click to Expand');
+
+  expandBtn.addEventListener("click", () => {
+    article.classList.toggle("article-open");
+  });
+
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+
+data.forEach((item) => {
+  console.log(item);
+ articles.append(cards(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph, item.fourthParagraph));
+})
+
+
+// panelData.forEach( data => {
+//   console.log("creating panels", data.title)
+//   accordion.append(createPanel(data.title, data.content))
+// })
+
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+
+
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -112,3 +185,10 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+data.map((article) => {
+  articles.append(cards(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph, article.fourthParagraph));
+})
+
+
